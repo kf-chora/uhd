@@ -8,6 +8,7 @@ IMGOUT = usrp_b200_bl.img
 
 all:$(IMGOUT)
 
+FX3FWROOT=$(shell pwd)/../..
 BL_ROOT=../../boot_fw
 BL_INC=$(BL_ROOT)/include
 BL_LIB=$(BL_ROOT)/lib
@@ -55,13 +56,13 @@ $(ELF2IMG):
 	gcc -o $(ELF2IMG) $(ELF2IMG_SRC)
 
 fx3_build_config.mak:
-	cp $(BL_CYP_SRC)/fx3_build_config.mak .
+	cp $(BL_ROOT)/build/fx3_build_config.mak .
 fx3_armgcc_config.mak:
-	cp $(BL_CYP_SRC)/fx3_armgcc_config.mak .
+	cp $(BL_ROOT)/build/fx3_armgcc_config.mak .
 cyfx_gcc_startup.S:
 	cp $(BL_CYP_SRC)/cyfx_gcc_startup.S .
 cyfx3.ld:
-	cp $(BL_CYP_SRC)/cyfx3.ld .
+	cp $(BL_ROOT)/build/cyfx3.ld .
 ../lib/cyfx3_boot.a:
 	mkdir -p ../lib
 	cp $(BL_LIB)/cyfx3_boot.a ../lib

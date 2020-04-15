@@ -10,17 +10,18 @@ HEX_OUT = usrp_b200_fw.hex
 all:$(HEX_OUT)
 
 # Pull in the Cypress SDK files to build the firmware
-FX3FWROOT=../..
+FX3FWROOT=$(shell pwd)/../..
 FX3PFWROOT=../../u3p_firmware
 include $(FX3FWROOT)/common/fx3_build_config.mak
 
 ifndef OC
-	OC	= arm-none-eabi-objcopy
+	OC	= "$$ARMGCC_INSTALL_PATH"/bin/arm-none-eabi-objcopy
 endif
 
 MODULE = b200_main
 
-SOURCE += $(MODULE).c b200_i2c.c b200_usb_descriptors.c ../common/common_helpers.c ../common/common_descriptors.c
+SOURCE += $(MODULE).c b200_i2c.c b200_usb_descriptors.c ../common/common_helpers.c ../common/common_descriptors.c ../../common/cyfxtx.c
+SOURCE_ASM=../../common/cyfx_gcc_startup.S
 
 INCFLAGS = -I../common
 

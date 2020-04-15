@@ -15,50 +15,16 @@ managing the transport from the host to the FPGA by configuring IO and DMA.
 ## Setting up the Cypress SDK
 
 In order to compile the USRP B200 and B210 firmware, you will need the FX3 SDK
-distributed by the FX3 manufacturer, Cypress Semiconductor. You can download the
-[FX3 SDK from here](http://www.cypress.com/documentation/software-and-drivers/ez-usb-fx3-sdk-archives)
-*Note*: You *must* use SDK version 1.2.3!
+distributed by the FX3 manufacturer, Cypress Semiconductor.
 
-Once you have downloaded it, extract the ARM cross-compiler from the tarball
-`ARM_GCC.tar.gz` and put it somewhere useful. The highest level directory you
-need is `arm-2013.03/`.
-
-Now that you have extracted the cross compilation toolchain, you need to set up
-some environment variables to tell the B2xx `makefile` where to look for the
-tools. These variables are:
-
-```
-    $ export ARMGCC_INSTALL_PATH=<your path>/arm-2013.03
-    $ export ARMGCC_VERSION=4.5.2
-```
-
-Now, you'll need to set-up the Cypress SDK, as well. In the SDK, copy the
-following sub-directories from the `firmware` directory to 
-`uhd.git/firmware/fx3`: `common/`, `lpp_source/`, `u3p_firmware/`, `boot_fw/`.
-In addition, copy the `elf2img` sub-directory from the `util` directory to
-`uhd.git/firmware/fx3`.
-
-Your directory structure should now look like:
-
-```
-uhd.git/
-       |
-       --firmware/
-                 |
-                 --fx3/
-                      |
-                      --b200/               # From UHD
-                      --boot_fw/            # From Cypress SDK
-                      --common/             # From Cypress SDK
-                      --elf2img/            # From Cypress SDK
-                      --gpif2_designer/     # From UHD
-                      --lpp_source/         # From Cypress SDK
-                      --u3p_firmware/       # From Cypress SDK
-                      --README.md           # From UHD
-```
-
+This step has been somewhat scripted. Run `source setup_fx3_sdk.sh` for help
+setting up the SDK. You can clean up the SDK by running `source setup_fx3_sdk.sh clean`.
 
 ## Applying the Patch to the Toolchain
+
+THIS WAS PREVIOUSLY SUPPORTED. However, this patching has not been migrated to
+the 1.3.4 SDK. Therfore `HAS_HEAP` AND `ENABLE_MSG` was uncommented in
+`firmware/fx3/b200/firmware/b200_main.c`. Old description below:
 
 Now, you'll need to apply a patch to a couple of files in the Cypress SDK. Head
 into the `common/` directory you just copied from the Cypress SDK, and apply the

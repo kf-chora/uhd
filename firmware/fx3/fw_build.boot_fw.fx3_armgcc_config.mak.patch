@@ -1,0 +1,6 @@
+23,24c23,24
+< CC	= arm-none-eabi-gcc
+< LD	= arm-none-eabi-ld
+---
+> CC	= "$$ARMGCC_INSTALL_PATH"/bin/arm-none-eabi-gcc
+> LD	= "$$ARMGCC_INSTALL_PATH"/bin/arm-none-eabi-ld

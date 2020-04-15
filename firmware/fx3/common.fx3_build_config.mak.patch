@@ -1,0 +1,14 @@
+76,78c76,82
+< LDLIBS = \
+< 	-L $(FX3FWROOT)/fw_lib/$(CYSDKVERSION)/$(CYCONFOPT)	\
+< 	-lcyu3sport						\
+---
+> LDLIBS = -L $(FX3FWROOT)/fw_lib/$(CYSDKVERSION)/$(CYCONFOPT)
+> 
+> ifeq ($(findstring release,$(CYSDKVERSION)),1_3)
+> LDLIBS += -lcyu3sport
+> endif
+> 
+> LDLIBS += \
+81a86
+> 

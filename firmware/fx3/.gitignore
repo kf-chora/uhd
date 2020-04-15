@@ -1,4 +1,9 @@
+FX3_SDK_1.3.4_Linux.tar.gz
+arm-2013.11
 boot_fw
+boot_lib
+fw_lib
+fw_build
 common
 elf2img
 lpp_source

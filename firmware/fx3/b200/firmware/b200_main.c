@@ -41,8 +41,8 @@
  *          Indented features must have the parent feature enabled as well.
  */
 
-#define HAS_HEAP                    // This requires memory to be set aside for the heap (e.g. required for printing floating-point numbers). You can apply the accompanying patch ('fx3_mem_map.patch') to fx3.ld & cyfxtx.c to create one.
-#define ENABLE_MSG                  // This will cause the compiled code to exceed the default text memory area (SYS_MEM). You can apply the accompanying patch ('fx3_mem_map.patch') to fx3.ld & cyfxtx.c to resize the memory map so it will fit.
+//#define HAS_HEAP                    // This requires memory to be set aside for the heap (e.g. required for printing floating-point numbers). You can apply the accompanying patch ('fx3_mem_map.patch') to fx3.ld & cyfxtx.c to create one.
+//#define ENABLE_MSG                  // This will cause the compiled code to exceed the default text memory area (SYS_MEM). You can apply the accompanying patch ('fx3_mem_map.patch') to fx3.ld & cyfxtx.c to resize the memory map so it will fit.
 #define ENABLE_MANUAL_DMA_XFER      // Allows us to set it from the host (using the side channel util), doesn't auto-enable it
 //#define   ENABLE_P2U_SUSP_EOP
 #define   ENABLE_MANUAL_DMA_XFER_FROM_HOST
